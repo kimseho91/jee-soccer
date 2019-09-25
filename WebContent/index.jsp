@@ -1,47 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>환영합니다.</title>
+	<meta charset="UTF-8" />
+	<title>축구 관리자 로그인</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-<div>
-<h2><a id="btn2" href="#">2.모든 포지션 보기</a></h2>
-<!-->4. 팀 아이디로 해당 팀의 포지션별 선수 검색 기능</!-->
-<h2>4.팀아이디와 포지션 입력하면 해당 선수 정보 출력</h2>
-<form id="btn4" action="<%=request.getContextPath()%>/player.do">
-	팀아이디 :<input type="text" name="teamId"/><br />
-	포지션 :<input type="text" name="position"/><br />
-	<input type="hidden" name="action" value="find4" />
-	<input type="hidden" name="page" value="4_find_by_teamid_position"/><br />
-	<input type="submit" value="전송" />	
-</form>
-<h2>5.팀아이디 키 성을 입력하면 해당 선수 정보 출력</h2>
-<form id="btn5" action="<%=request.getContextPath()%>/player.do">
-	팀아이디 :<input type="text" name="teamId" /><br />
-	키 :<input type="text" name="height" /><br />
-	성 :<input type="text" name="playerName" /><br />
-	<input type="hidden" name="action" value="find5" /><br />
-	<input type="hidden" name="page" value="5_find_by_teamid_height_name"/><br />
-	<input type="submit" value="전송" />
-</form>
+<div id="wrapper" style="width: 100%; height: 100%">
+	<form id="login_form" action="<%=request.getContextPath()%>/player.do">
+		<table border="1" style="width:500px;height:200px; margin: 100px auto">
+		<tr>
+			<td style="width: 300px">
+				USERNAME : <input type="text" name="playerId" style="width: 100%"/>
+			</td>
+			<td rowspan="2"> 
+				<input type="hidden" name="action" value="move" />
+				<input type="hidden" name="page" value="home" />
+				<input type="submit" value="login" style="width: 100%; height: 100%"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				PASSWORD : <input type="text" name="solar" style="width: 100%"/>
+			</td>
+		</tr>
+	</table>
+	</form>
+	<h3 style="width:300px; margin: 0 auto"><a id="a_join" href="">회원가입</a></h3>
 </div>
+
 <script>
-$('#btn2').click(function () {
-		alert('클릭!!');
-		location.assign('<%=request.getContextPath()%>/player.do?action=find2&page=2_positions');
+$('#login_form').submit(function () {
+		alert('로그인 버튼 클릭!!');
 });
-
-$('#btn4').submit(function () {
-		alert('테스트');
-});
-
-$('#btn5').submet(function () {
-		alert('테스트22');
-	
+$('#a_join').click(function () {
+		alert('회원가입 클릭!!');
+		location.assign('<%=request.getContextPath()%>/player.do?action=move&page=join');
 });
 </script>
 </body>

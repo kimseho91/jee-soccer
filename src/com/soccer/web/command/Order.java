@@ -1,5 +1,5 @@
 package com.soccer.web.command;
 
-public class Order {
-
+public interface Order {
+	public void execute();
 }
