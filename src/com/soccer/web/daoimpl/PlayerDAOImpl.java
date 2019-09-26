@@ -20,7 +20,7 @@ public class PlayerDAOImpl implements PlayerDAO{
 		}else {
 			
 		}
-		return false;
+		return true;
 	}
 	
 	@Override
