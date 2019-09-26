@@ -10,10 +10,18 @@ import com.soccer.web.pool.Constants;
 
 public class PlayerDAOImpl implements PlayerDAO{
 	private static PlayerDAOImpl instance = new PlayerDAOImpl();
-	public static PlayerDAOImpl getInstance() {
-		return instance;
-	}
+	public static PlayerDAOImpl getInstance() { return instance; }
 	private PlayerDAOImpl() {}
+	
+	@Override
+	public boolean login(PlayerBean param) {
+		if(param.getPlayerId().equals(null)) {
+			
+		}else {
+			
+		}
+		return false;
+	}
 	
 	@Override
 	public List<String> selectPositions() {

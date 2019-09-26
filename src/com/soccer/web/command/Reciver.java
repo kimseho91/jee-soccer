@@ -6,6 +6,5 @@ public class Reciver {
 	public static Command cmd = new Command();
 	public static void init(HttpServletRequest request) {
 		cmd = Commander.direct(request);
-		System.out.println("리시버 도착");
 	}
 }

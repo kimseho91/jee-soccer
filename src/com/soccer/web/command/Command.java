@@ -1,9 +1,7 @@
 package com.soccer.web.command;
 
 import javax.servlet.http.HttpServletRequest;
-
 import com.soccer.web.pool.Constants;
-
 import lombok.Data;
 
 @Data
@@ -13,13 +11,7 @@ public class Command implements Order{
 	
 	@Override
 	public void execute() {
-		setPage();
-		this.view = String.format(Constants.PATH, page);
-		System.out.println("커맨드 도착");
+		this.view = String.format(Constants.SINGLE_PATH, page);
 	}
 
-	public void setPage() {
-		page = request.getParameter("page");
-	}
-	
 }

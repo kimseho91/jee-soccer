@@ -17,7 +17,6 @@ public class PlayerController extends HttpServlet {
 			HttpServletResponse response) 
 			throws ServletException, IOException {
 		Reciver.init(request);
-		System.out.println("컨트롤러 서비스 도착");
 		Sender.forward(request, response);
 	}
 }

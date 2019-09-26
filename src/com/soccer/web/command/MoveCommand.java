@@ -5,14 +5,15 @@ import javax.servlet.http.HttpServletRequest;
 public class MoveCommand extends Command{
 	public MoveCommand(HttpServletRequest request) {
 		setRequest(request);
-		setAction((request.getParameter("action")==null)
-		?"move":request.getParameter("action"));
-		System.out.println("무브 커맨드 도착");
+		setDomain(request.getServletPath()
+				.substring(1,request.getServletPath().indexOf(",")));
+		setAction(request.getParameter("action"));
 		execute();
 	}
 	@Override
 	public void execute() {
+		setPage(request.getParameter("page"));
 		super.execute();
-		request.setAttribute("page",request.getParameter("page"));
+//		request.setAttribute("page",request.getParameter("page"));
 	}
 }
