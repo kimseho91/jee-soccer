@@ -5,5 +5,5 @@ public class Constants {
 		SINGLE_PATH = "WEB-INF/views/%s.jsp",
 		DOUBLE_PATH = "WEB-INF/views/%s/%s.jsp",
 		TRIPLE_PATH = "WEB-INF/views/%s/%s/%s.jsp",
-		VENDOR = "oracle";
+		VENDOR = "ORACLE";
 }

@@ -10,14 +10,15 @@ public class PlayerServiceImpl implements PlayerService{
 	
 	public static PlayerServiceImpl getInstance() { return instance; }
 	
-	private PlayerServiceImpl() {
-	}
+	private PlayerServiceImpl() {}
 	
 	@Override
-	public boolean login(PlayerBean param) {
-		boolean flag = true;
-		flag =PlayerDAOImpl.getInstance().login(param);
-		return flag;
+	public PlayerBean login(PlayerBean param) {
+		System.out.println("6. 로그인서비스 들어옴");
+		System.out.println(String.format("param 값 : %s, %s",
+				param.getPlayerId(),
+				param.getSolar()));
+		return PlayerDAOImpl.getInstance().selectByPlayerIdSolar(param);
 	}
 	@Override
 	public List<String> findPositions() {

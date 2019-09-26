@@ -1,5 +1,6 @@
 package com.soccer.web.daoimpl;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +15,45 @@ public class PlayerDAOImpl implements PlayerDAO{
 	private PlayerDAOImpl() {}
 	
 	@Override
-	public boolean login(PlayerBean param) {
-		if(param.getPlayerId().equals(null)) {
-			
-		}else {
-			
+	public PlayerBean selectByPlayerIdSolar(PlayerBean param) {
+		System.out.println("7. DAO 들어옴");
+		System.out.println(String.format("param 값 : %s, %s",
+				param.getPlayerId(),
+				param.getSolar()));
+		PlayerBean player = null;
+		String sql ="SELECT * \n" + 
+				"FROM PLAYER \n" + 
+				"WHERE PLAYER_ID LIKE ? \n" + 
+				"    AND SOLAR LIKE ?";
+		try {
+			PreparedStatement pstmt = DatabaseFactory
+					.createDatebase(Constants.VENDOR)
+					.getConnection()
+					.prepareStatement(sql);
+			pstmt.setString(1, param.getPlayerId());
+			pstmt.setString(2, param.getSolar());
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				player = new PlayerBean();
+				player.setBackNo(rs.getString("BACK_NO"));
+				player.setBirthDate(rs.getString("BIRTH_DATE"));
+				player.setEPlayerName(rs.getString("E_PLAYER_NAME"));
+				player.setHeight(rs.getString("HEIGHT"));
+				player.setJoinYYYY(rs.getString("JOIN_YYYY"));
+				player.setNation(rs.getString("NATION"));
+				player.setNickname(rs.getString("NICKNAME"));
+				player.setPlayerId(rs.getString("PLAYER_ID"));
+				player.setPlayerName(rs.getString("PLAYER_NAME"));
+				player.setPosition(rs.getString("POSITION"));
+				player.setSolar(rs.getString("SOLAR"));
+				player.setTeamId(rs.getString("TEAM_ID"));
+				player.setWeight(rs.getString("WEIGHT"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return true;
+		System.out.println("8반환된 정보 값 : "+player.toString());
+		return player;
 	}
 	
 	@Override
@@ -29,7 +62,9 @@ public class PlayerDAOImpl implements PlayerDAO{
         try {
         	String sql = "SELECT DISTINCT POSITION position \n"
         			+ "FROM PLAYER";
-                ResultSet rs= DatabaseFactory.
+        	String test = "SELECT PLAYER_ID playerId, SOLAR solar FROM PLAYER";
+
+        			ResultSet rs= DatabaseFactory.
                 		createDatebase(Constants.VENDOR).
                 		getConnection().
                 		prepareStatement(sql).
@@ -96,6 +131,25 @@ public class PlayerDAOImpl implements PlayerDAO{
 		}
 		System.out.println("리턴 전 list : "+name);
 		
+		return list;
+	}
+	@Override
+	public List<PlayerBean> selectByMany(PlayerBean parma) {
+		List<PlayerBean> list = new ArrayList<PlayerBean>();
+		String sql = " ? ";
+		try {
+			PreparedStatement pstmt = DatabaseFactory
+					.createDatebase(Constants.VENDOR)
+					.getConnection()
+					.prepareStatement(sql);
+			pstmt.setString(1, parma.getPlayerId());
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return list;
 	}
 	
