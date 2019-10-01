@@ -17,6 +17,8 @@ public class PlayerServiceImpl implements PlayerService{
 	
 	@Override
 	public PlayerBean login(PlayerBean param) {
+		System.out.println("서비스임플 : "
+	+PlayerDAOImpl.getInstance().selectByPlayerIdSolar(param));
 		return PlayerDAOImpl.getInstance().selectByPlayerIdSolar(param);
 	}
 	@Override

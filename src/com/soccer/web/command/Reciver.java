@@ -7,5 +7,6 @@ public class Reciver {
 	public static void init(HttpServletRequest request) {
 		System.out.println("리시버");
 		cmd = Commander.direct(request);
+		System.out.println("리시버 리퀘스트"+request);
 	}
 }

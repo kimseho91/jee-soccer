@@ -25,6 +25,7 @@ public class Commander {
 			break;
 		case LOGIN :
 			cmd = new LoginCommand(request);
+			System.out.println("커멘더 : "+ cmd);
 			break;
 		default:
 			break;

@@ -17,7 +17,7 @@ public class PlayerDAOImpl implements PlayerDAO{
 	
 	@Override
 	public PlayerBean selectByPlayerIdSolar(PlayerBean param) {
-		PlayerBean player = null;
+		PlayerBean player = new PlayerBean();
 		String sql ="SELECT * \n" + 
 				"FROM PLAYER \n" + 
 				"WHERE PLAYER_ID LIKE ? \n" + 
@@ -31,7 +31,6 @@ public class PlayerDAOImpl implements PlayerDAO{
 			pstmt.setString(2, param.getSolar());
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
-				player = new PlayerBean();
 				player.setBackNo(rs.getString("BACK_NO"));
 				player.setBirthDate(rs.getString("BIRTH_DATE"));
 				player.setEPlayerName(rs.getString("E_PLAYER_NAME"));
@@ -50,6 +49,7 @@ public class PlayerDAOImpl implements PlayerDAO{
 			e.printStackTrace();
 		}
 		System.out.println("8반환된 정보 값 : "+player.toString());
+		System.out.println("다오 selectByPlayerIdSolar :"+ player);
 		return player;
 	}
 	
