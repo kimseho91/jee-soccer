@@ -7,14 +7,9 @@ import com.soccer.web.serviceimpl.PlayerServiceImpl;
 
 public class LoginCommand extends Command{
 	public LoginCommand(HttpServletRequest request) {
-		System.out.println("★★★ 5. LoginCommand 들어옴 ★★★ ");
-		System.out.println(String.format("request 값 출력 : %s, %s, %s, %s ",
-				request.getParameter("playerId"), 
-				request.getParameter("solar"),
-				request.getParameter("action"),
-				request.getParameter("page")));
 		setRequest(request);
-		setDomain(request.getServletPath().substring(1,request.getServletPath().indexOf(".")));
+		setDomain(request.getServletPath()
+				.substring(1,request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
 		execute();
 	}

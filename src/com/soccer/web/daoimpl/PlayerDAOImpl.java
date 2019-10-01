@@ -8,6 +8,7 @@ import com.soccer.web.dao.PlayerDAO;
 import com.soccer.web.domanis.PlayerBean;
 import com.soccer.web.factory.DatabaseFactory;
 import com.soccer.web.pool.Constants;
+import com.sun.org.apache.regexp.internal.recompile;
 
 public class PlayerDAOImpl implements PlayerDAO{
 	private static PlayerDAOImpl instance = new PlayerDAOImpl();
@@ -16,10 +17,6 @@ public class PlayerDAOImpl implements PlayerDAO{
 	
 	@Override
 	public PlayerBean selectByPlayerIdSolar(PlayerBean param) {
-		System.out.println("7. DAO 들어옴");
-		System.out.println(String.format("param 값 : %s, %s",
-				param.getPlayerId(),
-				param.getSolar()));
 		PlayerBean player = null;
 		String sql ="SELECT * \n" + 
 				"FROM PLAYER \n" + 
@@ -151,6 +148,25 @@ public class PlayerDAOImpl implements PlayerDAO{
 			e.printStackTrace();
 		}
 		return list;
+	}
+	@Override
+	public boolean insertPlayer(PlayerBean param) {
+		boolean falg = false;
+        try {
+        	String sql = "INSERT INTO PLAYER(PLAYER_ID, SOLAR, TEAM_ID, PLAYER_NAME)\r\n" + 
+        			"VALUES(?,?,'K03','김세호');";
+        	PreparedStatement pstmt = DatabaseFactory
+					.createDatebase(Constants.VENDOR)
+					.getConnection()
+					.prepareStatement(sql);
+			pstmt.setString(1, param.getPlayerId());
+			pstmt.setString(2, param.getSolar());
+			int rs = pstmt.executeUpdate();
+			falg = (rs == 1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return falg;
 	}
 	
 }

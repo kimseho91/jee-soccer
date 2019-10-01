@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.soccer.web.command.Reciver;
 import com.soccer.web.command.Sender;
+import com.soccer.web.enums.Action;
 
 @WebServlet("/player.do")
 public class PlayerController extends HttpServlet {
@@ -16,13 +17,19 @@ public class PlayerController extends HttpServlet {
 	protected void service(HttpServletRequest request, 
 			HttpServletResponse response) 
 			throws ServletException, IOException {
-		System.out.println("1. 서블릿 들어옴");
-		System.out.println(String.format("request 값 : %s, %s, %s, %s",
-				request.getParameter("playerId"),
-				request.getParameter("solar"),
-				request.getParameter("action"),
-				request.getParameter("page")));
+		System.out.println("플레이어 서블릿 들어옴");
+		System.out.println(String.format("request 값 출력 %s, %s, %s, %s"
+				,request.getParameter("playerId")
+				,request.getParameter("solar")
+				,request.getParameter("action")
+				,request.getParameter("page")));
 		Reciver.init(request);
+		switch (Action.valueOf(request.getParameter("action").toUpperCase())) {
+		case CREATE : request.setAttribute("page", "login");
+			break;
+		default:
+			break;
+		}
 		Sender.forward(request, response);
 	}
 }

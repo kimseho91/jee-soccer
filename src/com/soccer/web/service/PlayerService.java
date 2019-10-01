@@ -9,4 +9,5 @@ public interface PlayerService {
 	public List<String> findPositions();
 	public List<PlayerBean> findByTeamidPosition(PlayerBean param);
 	public List<PlayerBean> findByTeamidHeightName(PlayerBean param);
+	public boolean Join(PlayerBean param);
 }

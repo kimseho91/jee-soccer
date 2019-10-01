@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>플레이어 메인 !!</title>
 </head>
 <body>
-로그인 실패
-	<a href="">로그인 재시도</a>
+
 </body>
 </html>

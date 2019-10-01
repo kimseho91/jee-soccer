@@ -7,17 +7,16 @@ import com.soccer.web.service.PlayerService;
 
 public class PlayerServiceImpl implements PlayerService{
 	private static PlayerServiceImpl instance = new PlayerServiceImpl();
-	
 	public static PlayerServiceImpl getInstance() { return instance; }
-	
 	private PlayerServiceImpl() {}
 	
 	@Override
+	public boolean Join(PlayerBean param) {
+		return PlayerDAOImpl.getInstance().insertPlayer(param);
+	}
+	
+	@Override
 	public PlayerBean login(PlayerBean param) {
-		System.out.println("6. 로그인서비스 들어옴");
-		System.out.println(String.format("param 값 : %s, %s",
-				param.getPlayerId(),
-				param.getSolar()));
 		return PlayerDAOImpl.getInstance().selectByPlayerIdSolar(param);
 	}
 	@Override

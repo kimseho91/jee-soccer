@@ -10,4 +10,5 @@ public interface PlayerDAO {
 	public List<PlayerBean> selectTeamidHeightName(PlayerBean param);
 	//테스트
 	public List<PlayerBean> selectByMany(PlayerBean parma);
+	public boolean insertPlayer(PlayerBean param);
 }

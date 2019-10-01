@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<img src="<%=request.getContextPath()%>/resources/img/loader.gif" alt="" />
+<img src="<%=request.getContextPath()%>/resources/img/loading.gif" alt="" />
 <script>
-location.assign('<%=request.getContextPath()%>/facade.do') 
+location.assign('<%=request.getContextPath()%>/facade.do?') 
 </script>

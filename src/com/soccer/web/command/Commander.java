@@ -5,17 +5,20 @@ import com.soccer.web.enums.Action;
 
 public class Commander {
 	public static Command direct(HttpServletRequest request) {
-		System.out.println("3. 커맨더 들어옴");
-		System.out.println(String.format("request 값 : %s, %s, %s, %s",
-				request.getParameter("playerId"),
-				request.getParameter("solar"),
-				request.getParameter("action"),
-				request.getParameter("page")));
 		Command cmd = null;
+		System.out.println("커맨더");
 		switch (Action.valueOf(request.getParameter("action").
 				toUpperCase())) {
+		case CREATE :
+			cmd = new CreateCommand(request);
+			System.out.println("커멘더 스위치 탐");
+			break;
 		case SERACH :
-			cmd = new SerachCommand();
+			cmd = new SearchCommand(request);
+			break;
+		case UPDATE :
+			break;
+		case DELETE :
 			break;
 		case MOVE :
 			cmd = new MoveCommand(request); 
