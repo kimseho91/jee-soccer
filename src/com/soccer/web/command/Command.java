@@ -12,7 +12,8 @@ public class Command implements Order{
 	@Override
 	public void execute() {
 		System.out.println("커맨드");
-		this.view = String.format(Constants.DOUBLE_PATH,"facade", "main");
-	}
-
+		this.view = String.format(Constants.DOUBLE_PATH,request.getParameter("folder"),
+				(request.getParameter("folder").equals("facade"))?"main"
+						:"p_main");	
+		}
 }

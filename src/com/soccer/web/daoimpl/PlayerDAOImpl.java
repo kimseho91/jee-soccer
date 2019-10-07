@@ -130,25 +130,7 @@ public class PlayerDAOImpl implements PlayerDAO{
 		
 		return list;
 	}
-	@Override
-	public List<PlayerBean> selectByMany(PlayerBean parma) {
-		List<PlayerBean> list = new ArrayList<PlayerBean>();
-		String sql = " ? ";
-		try {
-			PreparedStatement pstmt = DatabaseFactory
-					.createDatebase(Constants.VENDOR)
-					.getConnection()
-					.prepareStatement(sql);
-			pstmt.setString(1, parma.getPlayerId());
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
+	
 	@Override
 	public boolean insertPlayer(PlayerBean param) {
 		boolean falg = false;

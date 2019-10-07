@@ -8,7 +8,7 @@ public class Sender {
 			HttpServletResponse response) {
 		try {
 			request
-			.getRequestDispatcher(Reciver.cmd.getView())
+			.getRequestDispatcher(Receiver.cmd.getView())
 			.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

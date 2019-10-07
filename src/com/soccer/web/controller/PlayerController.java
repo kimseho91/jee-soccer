@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.soccer.web.command.Reciver;
+import com.soccer.web.command.Receiver;
 import com.soccer.web.command.Sender;
 import com.soccer.web.enums.Action;
 
@@ -23,14 +23,19 @@ public class PlayerController extends HttpServlet {
 				,request.getParameter("solar")
 				,request.getParameter("action")
 				,request.getParameter("page")));
-		Reciver.init(request);
-		System.out.println("플레이어 컨트롤러 : "+request);
+		Receiver.init(request);
 		switch (Action.valueOf(request.getParameter("action").toUpperCase())) {
-		case CREATE : request.setAttribute("page", "login");
+		case CREATE: request.setAttribute("page", "login");	
 			break;
+		case SEARCH : request.setAttribute("page",request.getParameter("page"));
 		default:
 			break;
 		}
 		Sender.forward(request, response);
+		System.out.println(String.format("request 값 출력 : %s, %s, %s, %s ",
+				request.getParameter("TeamId"), 
+				request.getParameter("solar"),
+				request.getParameter("action"),
+				request.getParameter("page")));
 	}
 }

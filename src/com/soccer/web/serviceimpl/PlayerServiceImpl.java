@@ -19,8 +19,9 @@ public class PlayerServiceImpl implements PlayerService{
 	public PlayerBean login(PlayerBean param) {
 		System.out.println("서비스임플 : "
 	+PlayerDAOImpl.getInstance().selectByPlayerIdSolar(param));
-		return PlayerDAOImpl.getInstance().selectByPlayerIdSolar(param);
-	}
+		PlayerBean player = new PlayerBean();
+		player = PlayerDAOImpl.getInstance().selectByPlayerIdSolar(param);
+		return player;	}
 	@Override
 	public List<String> findPositions() {
 		System.out.println("서비스 도착");

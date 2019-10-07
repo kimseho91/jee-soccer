@@ -16,7 +16,7 @@
 		<jsp:include page="join.jsp"/>	
 	</c:when>
 	<c:when test="${page eq 'main' }">
-		<jsp:include page="../player/main.jsp"/>
+		<jsp:include page="../player/p_main.jsp"/>
 	</c:when>
 </c:choose>
 </div> 
